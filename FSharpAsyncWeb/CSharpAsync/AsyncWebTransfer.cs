@@ -7,7 +7,7 @@ using System.Net;
 
 namespace CSharpAsync
 {
-    public class AsyncImageTransfer
+    public class AsyncWebTransfer
     {
         private WebRequest m_request;
         private WebResponse m_response;
@@ -15,7 +15,7 @@ namespace CSharpAsync
         private HttpContextBase m_context;
         private string m_url;
 
-        public AsyncImageTransfer(HttpContextBase context, string url)
+        public AsyncWebTransfer(HttpContextBase context, string url)
         {
             this.m_context = context;
             this.m_url = url;

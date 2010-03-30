@@ -7,7 +7,7 @@ open System.Net
 
 open WebRequestExtensions
 
-type AsyncImageTransfer(context: HttpContextBase, url: string) =
+type AsyncWebTransfer(context: HttpContextBase, url: string) =
     inherit AsyncWorker()
 
     override t.WorkAsync() = 

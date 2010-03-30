@@ -16,7 +16,7 @@ namespace WebApp.Controllers
         public void LoadAsync(string url)
         {
             AsyncManager.OutstandingOperations.Increment();
-            var transfer = new CSharpAsync.AsyncImageTransfer(HttpContext, url);
+            var transfer = new CSharpAsync.AsyncWebTransfer(HttpContext, url);
 
             transfer.Completed += (sender, args) => 
                 AsyncManager.OutstandingOperations.Decrement();
@@ -32,7 +32,7 @@ namespace WebApp.Controllers
         public void LoadFsAsync(string url)
         {
             AsyncManager.OutstandingOperations.Increment();
-            var transfer = new FSharpAsync.AsyncImageTransfer(HttpContext, url);
+            var transfer = new FSharpAsync.AsyncWebTransfer(HttpContext, url);
 
             transfer.Completed += (sender, args) =>
                 AsyncManager.OutstandingOperations.Decrement();

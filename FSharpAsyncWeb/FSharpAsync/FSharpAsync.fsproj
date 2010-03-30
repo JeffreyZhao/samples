@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WebRequestExtensions.fs" />
+    <Compile Include="RefCellExtensions.fs" />
     <Compile Include="AsyncWorker.fs" />
     <Compile Include="AsyncTransfer.fs" />
     <Compile Include="AsyncWebTransfer.fs" />

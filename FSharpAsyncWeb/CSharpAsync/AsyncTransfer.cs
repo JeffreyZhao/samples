@@ -17,7 +17,7 @@ namespace CSharpAsync
             this.m_streamOut = streamOut;
         }
 
-        public void Start()
+        public void StartAsync()
         {
             byte[] buffer = new byte[1024];
 

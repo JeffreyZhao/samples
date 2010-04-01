@@ -21,7 +21,7 @@ namespace CSharpAsync
             this.m_url = url;
         }
 
-        public void Start()
+        public void StartAsync()
         {
             this.m_request = WebRequest.Create(this.m_url);
             this.m_request.BeginGetResponse(this.EndGetResponseCallback, null);
@@ -38,18 +38,13 @@ namespace CSharpAsync
                 var streamOut = this.m_context.Response.OutputStream;
 
                 var transfer = new AsyncTransfer(streamIn, streamOut);
-                transfer.Completed += OnTransferCompleted;
-                transfer.Start();
+                transfer.Completed += (sender, args) => this.OnCompleted(args.Exception);
+                transfer.StartAsync();
             }
             catch(Exception ex)
             {
                 this.OnCompleted(ex);
             }
-        }
-
-        private void OnTransferCompleted(object sender, CompletedEventArgs args)
-        {
-            this.OnCompleted(args.Exception);
         }
 
         private void OnCompleted(Exception ex)

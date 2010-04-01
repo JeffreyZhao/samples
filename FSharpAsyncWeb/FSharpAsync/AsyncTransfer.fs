@@ -27,4 +27,4 @@ type AsyncTransfer(streamIn: Stream, streamOut: Stream) =
                     hasData := false
         }
 
-    override t.WorkAsync() = transferAsync (Array.zeroCreate 1024)
+    override t.DoWorkAsync() = transferAsync (Array.zeroCreate 1024)

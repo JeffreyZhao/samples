@@ -17,11 +17,11 @@ type AsyncWorker() =
     [<CLIEvent>]
     member e.Completed = completed.Publish
 
-    abstract WorkAsync: unit -> Async<unit>
+    abstract DoWorkAsync: unit -> Async<unit>
 
-    member e.Start() = 
+    member e.StartAsync() = 
         Async.StartWithContinuations
-            (e.WorkAsync(),
+            (e.DoWorkAsync(),
              (fun _ -> completed.Trigger(new CompletedEventArgs(null))),
              (fun ex -> completed.Trigger(new CompletedEventArgs(ex))),
              (fun ex -> ex |> ignore))

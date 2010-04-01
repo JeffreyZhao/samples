@@ -10,7 +10,7 @@ open WebRequestExtensions
 type AsyncWebTransfer(context: HttpContextBase, url: string) =
     inherit AsyncWorker()
 
-    override t.WorkAsync() = 
+    override t.DoWorkAsync() = 
         async {
             let request = WebRequest.Create(url)
             use! response = request.GetResponseAsync()
@@ -19,5 +19,5 @@ type AsyncWebTransfer(context: HttpContextBase, url: string) =
             let streamIn = response.GetResponseStream()
             let streamOut = context.Response.OutputStream
             let transfer = new AsyncTransfer(streamIn, streamOut)
-            do! transfer.WorkAsync()
+            do! transfer.DoWorkAsync()
         }

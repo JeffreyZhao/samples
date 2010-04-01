@@ -21,7 +21,7 @@ namespace WebApp.Controllers
             transfer.Completed += (sender, args) => 
                 AsyncManager.OutstandingOperations.Decrement();
 
-            transfer.Start();
+            transfer.StartAsync();
         }
 
         public ActionResult LoadCompleted()
@@ -37,7 +37,7 @@ namespace WebApp.Controllers
             transfer.Completed += (sender, args) =>
                 AsyncManager.OutstandingOperations.Decrement();
 
-            transfer.Start();
+            transfer.StartAsync();
         }
 
         public ActionResult LoadFsCompleted()

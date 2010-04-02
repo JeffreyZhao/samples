@@ -10,18 +10,16 @@ type CompletedEventArgs(ex: Exception) =
     member e.Exception = ex
 
 [<AbstractClass>]
-type AsyncWorker() = 
+type AsyncWorker(asyncWork: Async<unit>) = 
     
     let completed = new Event<CompletedEventArgs>()
 
     [<CLIEvent>]
     member e.Completed = completed.Publish
 
-    abstract DoWorkAsync: unit -> Async<unit>
-
     member e.StartAsync() = 
         Async.StartWithContinuations
-            (e.DoWorkAsync(),
+            (asyncWork,
              (fun _ -> completed.Trigger(new CompletedEventArgs(null))),
              (fun ex -> completed.Trigger(new CompletedEventArgs(ex))),
              (fun ex -> ex |> ignore))

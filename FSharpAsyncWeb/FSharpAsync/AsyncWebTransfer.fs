@@ -8,16 +8,4 @@ open System.Net
 open WebRequestExtensions
 
 type AsyncWebTransfer(context: HttpContextBase, url: string) =
-    inherit AsyncWorker()
-
-    override t.DoWorkAsync() = 
-        async {
-            let request = WebRequest.Create(url)
-            use! response = request.GetResponseAsync()
-            context.Response.ContentType <- response.ContentType
-            
-            let streamIn = response.GetResponseStream()
-            let streamOut = context.Response.OutputStream
-            let transfer = new AsyncTransfer(streamIn, streamOut)
-            do! transfer.DoWorkAsync()
-        }
+    inherit AsyncWorker(Transfer.webTransferAsync context url)

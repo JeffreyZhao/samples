@@ -18,7 +18,7 @@ type FSharpControllerBase() =
             c.AsyncManager.OutstandingOperations.Decrement() |> ignore
 
         let onFailed ex =
-            c.AsyncManager.Parameters.["ex"] <- ex
+            c.AsyncManager.Parameters.["error"] <- ex
             c.AsyncManager.OutstandingOperations.Decrement() |> ignore
 
         Async.StartWithContinuations(work, onSucceeded, onFailed, onFailed)

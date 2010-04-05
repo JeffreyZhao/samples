@@ -19,7 +19,7 @@ namespace WebApp.Controllers
             StartAsync(Load(url));
         }
 
-        public ActionResult LoadCompleted(ActionResult result, Exception ex)
+        public ActionResult LoadCompleted(ActionResult result, Exception error)
         {
             return result;
         }

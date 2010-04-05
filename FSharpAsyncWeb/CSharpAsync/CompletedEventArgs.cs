@@ -9,9 +9,9 @@ namespace CSharpAsync
     {
         public CompletedEventArgs(Exception ex)
         {
-            this.Exception = ex;
+            this.Error = ex;
         }
 
-        public Exception Exception { get; private set; }
+        public Exception Error { get; private set; }
     }
 }

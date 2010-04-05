@@ -7,7 +7,7 @@ open System
 type CompletedEventArgs(ex: Exception) =
     inherit EventArgs()
 
-    member e.Exception = ex
+    member e.Error = ex
 
 [<AbstractClass>]
 type AsyncWorker(asyncWork: Async<unit>) = 

@@ -38,7 +38,7 @@ namespace CSharpAsync
                 var streamOut = this.m_context.Response.OutputStream;
 
                 var transfer = new AsyncTransfer(streamIn, streamOut);
-                transfer.Completed += (sender, args) => this.OnCompleted(args.Exception);
+                transfer.Completed += (sender, args) => this.OnCompleted(args.Error);
                 transfer.StartAsync();
             }
             catch(Exception ex)

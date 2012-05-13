@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfUserControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view="clr-namespace:WpfUserControl.Views"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <!--<view:BadValueInput Text="{Binding Path=MyText}" Number="{Binding Path=MyNumber}" />-->
+        <StackPanel>
+            <view:ValueInput Text="{Binding Path=MyText}" Number="{Binding Path=MyNumber}" />
+            <StackPanel>
+                <Label Content="{Binding Path=MyText}" />
+                <Label Content="{Binding Path=MyNumber}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
